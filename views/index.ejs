@@ -1,0 +1,27 @@
+<% if(myData[0].name){ %>
+	<form method="GET" action="/dino">
+		<label for="nameFilter">Filter by Name</label>
+		<input id="nameFilter" type="text" name="nameFilter">
+		<input type="submit">
+	</form>
+<% } %>
+
+<% if(myData[0].img_url){ %>
+	<form method="GET" action="/prehis">
+		<label for="typeFilter">Filter by Type</label>
+		<input id="typeFilter" type="text" name="typeFilter">
+		<input type="submit">
+	</form>
+<% } %>
+
+<ul>
+	<% myData.forEach(function(creature){ %>
+	<% if(creature.name){ %>
+		<li><%= creature.name %> is a <%=creature.type %></li>
+	<% } %>
+	<% if(creature.type && !creature.name){ %>
+		<li><%= creature.type %> <img src="<%= creature.img_url %>"> </li>
+	<% } %>
+
+	<% }) %>
+</ul>
